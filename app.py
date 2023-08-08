@@ -19,4 +19,4 @@ app.register_blueprint(signup_bp)
 app.register_blueprint(feedback_bp)
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=False)
