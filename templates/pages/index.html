@@ -1,0 +1,219 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    {% block banner %}
+        <section class="banner">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6 col-md-offset-3">
+                        {% for b in banner %}
+                            <h4>{{ b.h4 }}</h4>
+                            <h2>{{ b.h2 }}</h2>
+                            <p>{{ b.p }}</p>
+                            <div class="primary-button">
+                                <a href="#" class="scroll-link" data-id="book-table">{{ b.btn_text }}</a>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </section>
+    {% endblock %}
+
+    {% block cook_delecious %}
+        <section class="cook-delecious">
+            <div class="container">
+                <div class="row">
+                    {% for c in cook_delecious %}
+                        <div class="col-md-3 col-md-offset-1">
+                            <div class="first-image">
+                                <img src="{{ c.first_img }}" alt="">
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="cook-content">
+                                <h4>{{ c.title }}</h4>
+                                <div class="contact-content">
+                                    <span>{{ c.span }}</span>
+                                    <h6>{{ c.phone }}</h6>
+                                </div>
+                                <span>or</span>
+                                <div class="primary-white-button">
+                                    <a href="#" class="scroll-link" data-id="book-table">{{ c.btn_text }}</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="second-image">
+                                <img src="{{ c.second_img }}" alt="">
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </section>
+    {% endblock %}
+
+    {% block services %}
+        <section class="services">
+            <div class="container">
+                <div class="row">
+                    {% for s in services %}
+                        <div class="col-md-3 col-sm-6 col-xs-12">
+                            <div class="service-item">
+                                <a href="{{ s.url }}">
+                                    <img src="{{ s.img }}" alt="{{ s.title }}">
+                                    <h4>{{ s.title }}</h4>
+                                </a>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+
+            </div>
+        </section>
+    {% endblock %}
+
+    {% block book_table %}
+        <section id="book-table">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="heading">
+                            <h2>Book Your Table Now</h2>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-md-offset-2 col-sm-12">
+                        <div class="left-image">
+                            <img src="{{ url_for('static', filename="img/book_left_image.jpg") }}" alt="">
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-sm-12">
+                        <div class="right-info">
+                            <h4>Reservation</h4>
+                            <form id="form-submit" action="/reservation" method="POST">
+                                <div class="row">
+                                    {% for bt in book_table %}
+                                    <div class="col-md-6">
+                                        <fieldset>
+                                            <input type="text" name="{{ bt.name }}" value="" required placeholder="{{ bt.placeholder }}">
+                                        </fieldset>
+                                    </div>
+                                    {% endfor %}
+                                    <div class="col-md-6">
+                                        <fieldset>
+                                            <button type="submit" id="form-submit" class="btn">Book Table</button>
+                                        </fieldset>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    {% endblock %}
+
+    {% block app %}
+        <section class="get-app">
+            <div class="container">
+                <div class="row">
+                    <div class="heading">
+                        <h2>Get application for your phone</h2>
+                    </div>
+                    <div class="primary-white-button">
+                        <a href="#">Download now</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    {% endblock %}
+
+    {% block food_menu %}
+        <section class="featured-food">
+            <div class="container">
+                <div class="row">
+                    <div class="heading">
+                        <h2>Weekly Featured Food</h2>
+                    </div>
+                </div>
+                <div class="row">
+                    {% for fm in food_menu %}
+                        <div class="col-md-4">
+                            <div class="food-item">
+                                <h2>{{ fm.title }}</h2>
+                                <img src="{{ fm.img_url }}" alt="{{ fm.name }}">
+                                <div class="price">{{ fm.price }}</div>
+                                <div class="text-content">
+                                    <h4>{{ fm.name }}</h4>
+                                    <p>{{ fm.description }}</p>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </section>
+    {% endblock %}
+
+    {% block our_blog %}
+        <section class="our-blog">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="heading">
+                            <h2>Our blog post</h2>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    {% for ob in our_blog %}
+                        <div class="col-md-6">
+                            <div class="blog-post">
+                                <img src="{{ ob.img_url }}" alt="{{ ob.title }}">
+                                <div class="date">{{ ob.date }}</div>
+                                <div class="right-content">
+                                    <h4>{{ ob.title }}</h4>
+                                    <span>{{ ob.span }}</span>
+                                    <p>{{ ob.description }}</p>
+                                    <div class="text-button">
+                                        <a href="{{ ob.btn_url }}">{{ ob.btn_text }}</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </section>
+    {% endblock %}
+
+    {% block sign_up %}
+        <section class="sign-up">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="heading">
+                            <h2>Signup for our newsletters</h2>
+                        </div>
+                    </div>
+                </div>
+                <form id="contact" action="/signup" method="POST">
+                    <div class="row">
+                        <div class="col-md-4 col-md-offset-3">
+                            <fieldset>
+                                <input name="email" type="text" class="form-control" id="email"
+                                       placeholder="Enter your email here..." required="">
+                            </fieldset>
+                        </div>
+                        <div class="col-md-2">
+                            <fieldset>
+                                <button type="submit" id="form-submit" class="btn">Send Message</button>
+                            </fieldset>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </section>
+    {% endblock %}
+{% endblock %}

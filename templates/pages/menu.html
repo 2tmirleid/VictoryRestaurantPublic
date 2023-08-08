@@ -1,0 +1,170 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    {% block menu_heading %}
+        <section class="page-heading">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h1>Our Menus</h1>
+                        <p>Curabitur at dolor sed felis lacinia ultricies sit amet vel sem. Vestibulum diam leo, sodales
+                            tempor lectus sed, varius gravida mi.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    {% endblock %}
+
+    {% block breakfast_menu %}
+        <section class="breakfast-menu">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-10 col-md-offset-1">
+                        <div class="breakfast-menu-content">
+                            <div class="row">
+                                <div class="col-md-5">
+                                    <div class="left-image">
+                                        <img src="{{ url_for('static', filename="img/breakfast_menu.jpg") }}"
+                                             alt="Breakfast">
+                                    </div>
+                                </div>
+                                <div class="col-md-7">
+                                    <h2>Breakfast Menu</h2>
+                                    <div id="owl-breakfast" class="owl-carousel owl-theme">
+                                        {% for bm in breakfast_menu %}
+                                            <div class="item col-md-12">
+                                                <div class="food-item">
+                                                    <img src="{{ bm.img_url }}" alt="{{ bm.title }}">
+                                                    <div class="price">{{ bm.price }}</div>
+                                                    <div class="text-content">
+                                                        <h4>{{ bm.title }}</h4>
+                                                        <p>{{ bm.description }}</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        {% endfor %}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    {% endblock %}
+
+    {% block lunch_menu %}
+        <section class="lunch-menu">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-10 col-md-offset-1">
+                        <div class="lunch-menu-content">
+                            <div class="row">
+                                <div class="col-md-7">
+                                    <h2>Lunch Menu</h2>
+                                    <div id="owl-lunch" class="owl-carousel owl-theme">
+                                        {% for lm in lunch_menu %}
+                                            <div class="item col-md-12">
+                                                <div class="food-item">
+                                                    <img src="{{ lm.img_url }}" alt="{{ lm.title }}">
+                                                    <div class="price">{{ lm.price }}</div>
+                                                    <div class="text-content">
+                                                        <h4>{{ lm.title }}</h4>
+                                                        <p>{{ lm.description }}</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        {% endfor %}
+                                    </div>
+                                </div>
+                                <div class="col-md-5">
+                                    <div class="left-image">
+                                        <img src="{{ url_for('static', filename="img/lunch_menu.jpg") }}" alt="">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    {% endblock %}
+
+    {% block dinner_menu %}
+        <section class="dinner-menu">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-10 col-md-offset-1">
+                        <div class="dinner-menu-content">
+                            <div class="row">
+                                <div class="col-md-5">
+                                    <div class="left-image">
+                                        <img src="{{ url_for('static', filename="img/dinner_menu.jpg") }}" alt="">
+                                    </div>
+                                </div>
+                                <div class="col-md-7">
+                                    <h2>Dinner Menu</h2>
+                                    <div id="owl-dinner" class="owl-carousel owl-theme">
+                                        {% for dm in dinner_menu %}
+                                            <div class="item col-md-12">
+                                                <div class="food-item">
+                                                    <img src="{{ dm.img_url }}" alt="{{ dm.title }}">
+                                                    <div class="price">{{ dm.price }}</div>
+                                                    <div class="text-content">
+                                                        <h4>{{ dm.title }}</h4>
+                                                        <p>{{ dm.description }}</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        {% endfor %}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    {% endblock %}
+
+    {% block book_table %}
+        <section id="book-table">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="heading">
+                            <h2>Book Your Table Now</h2>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-md-offset-2 col-sm-12">
+                        <div class="left-image">
+                            <img src="{{ url_for('static', filename="img/book_left_image.jpg") }}" alt="">
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-sm-12">
+                        <div class="right-info">
+                            <h4>Reservation</h4>
+                            <form id="form-submit" action="/reservation" method="POST">
+                                <div class="row">
+                                    {% for bt in book_table %}
+                                    <div class="col-md-6">
+                                        <fieldset>
+                                            <input type="text" name="{{ bt.name }}" value="" required placeholder="{{ bt.placeholder }}">
+                                        </fieldset>
+                                    </div>
+                                    {% endfor %}
+                                    <div class="col-md-6">
+                                        <fieldset>
+                                            <button type="submit" id="form-submit" class="btn">Book Table</button>
+                                        </fieldset>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    {% endblock %}
+{% endblock %}
